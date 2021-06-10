@@ -1,4 +1,4 @@
-h1 {
+/* h1 {
     text-align: center;
     padding-left: 30%;
     padding-right: 30%;
@@ -34,3 +34,29 @@ div{
    padding-top: 90px ;
    
 }
+.APP{
+    
+align-items:  center;
+    text-align: center;
+   display:inline-block;
+   justify-content:space-between;
+   padding-top: 90px ;}
+ 
+ 
+   tbody{
+    align-items:  center;
+    text-align: center;
+   display:flex;
+   justify-content:space-between;
+   padding-top: 90px ;}
+ td{
+    align-items:  center;
+    text-align: center;
+    display:flex;
+    justify-content:center;
+    padding-left: 0 ;
+    width: 100px;
+    height: 100px;
+
+ }
+      */
