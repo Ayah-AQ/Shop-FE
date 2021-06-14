@@ -1,8 +1,10 @@
 import { Logo, NavItem, ThemeButton } from "./navStyle";
 
 const NavBar = ({ currentTheme, ToggleCurrentTheme }) => {
+
+
   return (
-    <nav className="navbar navbar-expand">
+   <nav className="navbar navbar-expand">
       <Logo className="navbar-brand" to="/">
         <img src={currentTheme === "light" ? "https://wallpapercave.com/wp/wp5159053.jpg" :"https://wallpapercave.com/wp/wp5146985.jpg"} alt="logo" />
       </Logo>
@@ -18,7 +20,6 @@ const NavBar = ({ currentTheme, ToggleCurrentTheme }) => {
         </ThemeButton>
       </div>
     </nav>
-  );
-};
+  )};
 
 export default NavBar;

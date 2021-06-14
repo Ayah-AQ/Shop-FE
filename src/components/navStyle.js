@@ -20,8 +20,9 @@ export const Logo = styled(Link)`
 export const NavItem = styled(NavLink)`
   color: ${(props) => props.theme.mainColor};
   padding: 0.25em 1em;
-  &.active {
+   &.active {
     color:blueviolet;
+    background-color:aliceblue;
   }
 `;
 export const ThemeButton = styled.button`
@@ -29,5 +30,5 @@ export const ThemeButton = styled.button`
   padding: 0.25em 1em;
   border-radius: 3px;
   background-color: ${(props) => props.theme.mainColor};
-  color: ${(props) => props.theme.backgroundColor};
+   color: ${(props) => props.theme.backgroundColor};
 `;

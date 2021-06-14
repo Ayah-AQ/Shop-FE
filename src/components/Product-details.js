@@ -1,12 +1,14 @@
   
 import {Link,Redirect, useParams } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import {useSelector,useDispatch} from "react-redux";
+import { AiTwotoneEdit } from "react-icons/ai";
 //styles
-import { DetailWrapper, BackButton } from "../style";
+import { DetailWrapper, BackButton, ButtonsWrapper  } from "../style";
 //Components
+import UpdateButton from "./buttons/UpdateButton";
 import DeleteButton from "./buttons/Delete";
 
-const ProductDetail = (props) => {
+const ProductDetail = () => {
   // const product = props.product;
 
   // const handleDelete = (productId) => {
@@ -14,12 +16,31 @@ const ProductDetail = (props) => {
   //   props.setProduct(null);
   // };
 
-  const productSlug = useParams().productSlug;
-    const product = props.products.find(
-    (product) => product.slug == productSlug
-  );   
-  if (!product) return <Redirect to="/Error"></Redirect>;
+  // const productSlug = useParams().productSlug;
+  //   const product = props.products.find(
+  //   (product) => product.slug == productSlug
+  // );   
+  // if (!product) return <Redirect to="/Error"></Redirect>;
+  // const products = useSelector(state => state.products);
 
+  // const product = products.find((product) => product.slug === productSlug);
+
+  // if (!product) return <Redirect to="/Error" />;
+
+  // const products = useSelector((state) => state.products.products);
+  // const productSlug = useParams().productSlug;
+
+  // const product = products.find((product) => product.slug === productSlug);
+  // if (!product) return <Redirect to="/Error" />;
+
+
+
+  const productSlug = useParams().productSlug
+  const products= useSelector((state)=> state.products)
+  const dispatch= useDispatch()
+  const product=products.find((product)=> product.slug === productSlug)
+   if (!product) return <Redirect to="/Error" />;
+ 
   return (
     <DetailWrapper>
           {/* <Link to={`/products/${props.product.slug}`}></Link> */}
@@ -27,14 +48,19 @@ const ProductDetail = (props) => {
       <img src={product.image} alt={product.name} />
       <p>{product.description}</p>
       <p>{product.price} JD </p>
-      <BackButton className="detail" onClick={() => props.setProduct(null)}>
+      {/* <BackButton className="detail" onClick={() => props.setProduct(null)}>
         Back
-      </BackButton>
-      <DeleteButton
-        productId={product.id}
-        deleteProduct={props.deleteProduct}
-      />
-    </DetailWrapper>
+      </BackButton> */}
+      <DeleteButton productId={product.id} />
+      <UpdateButton className="float-right" productSlug={product.slug} />
+          {/* <BackButton onClick={() => props.setProduct(null)}>
+             back
+          </BackButton> */}
+           <Link to="/products">
+          <BackButton  type="back"className="btn btn-success" color="blue">Back</BackButton>
+        </Link>
+        </DetailWrapper>
+        
   );
 };
 

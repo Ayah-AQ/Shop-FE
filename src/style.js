@@ -32,9 +32,9 @@ export const Theme={
 },
  
   dark: {
-    mainColor:"rgb(216, 226, 225)",
+    mainColor: "rgb(216, 226, 225)",
     backgroundColor:"#231e23",
-    textColor:"rgb(216, 226, 225)",  },
+    textColor:"rgb(216, 226, 225)",},
 };
   
 
@@ -223,11 +223,53 @@ export const Button = styled.button`
   }
 `;
 
+export const ButtonsWrapper = styled.div`
+   justify-content: right;
+   margin-top: 20%;
+   margin-left: 13%;
+   padding: 3%;
+   width: 50vw;
+`;
 
-export const NavItem = styled(NavLink)`
-  color: ${(props) => props.theme.mainColor};
+export const BackButtonStyled = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid ${(props) => props.theme.pink};
+  color: palevioletred;
+  margin: 0 1em;
   padding: 0.25em 1em;
-  &.active {
-    color: ${(props) => props.theme.pink};
+  margin: auto;
+  display: block;
+  margin-top: 2%;
+  &:hover {
+    color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
   }
+`;
+
+
+export const CreateButtonStyled = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid ${(props) => props.theme.pink};
+  color: palevioletred;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  margin: auto;
+  display: block;
+  &:hover {
+    color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
+  }
+`;
+
+export const AddButtonStyled = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid ${(props) => props.theme.pink};
+  color: palevioletred;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  margin: auto;
+  display: block;
 `;

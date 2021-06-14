@@ -1,15 +1,29 @@
 //Styles
 import { DeleteButtonStyledDetailed } from "../../styles";
+import { deleteProduct } from "../../store/actions";
+import { useDispatch } from "react-redux"
+// const DeleteButtonDetailed = (props) => {
+//   const handleDelete = () => {
+//     props.deleteProduct(props.productId);
+//   };
+//   return (
+//     <DeleteButtonStyledDetailed onClick={handleDelete}>
+//       Delete
+//     </DeleteButtonStyledDetailed>
+//   );
+// };
 
-const DeleteButtonDetailed = (props) => {
-  const handleDelete = () => {
-    props.deleteProduct(props.productId);
-  };
+;
+
+const DeleteButtonStyledDetailed = ({ productId }) => {
+  const dispatch = useDispatch();
+
+
   return (
-    <DeleteButtonStyledDetailed onClick={handleDelete}>
+    <DeleteButtonStyled onClick={() => dispatch(deleteProduct(productId))}>
       Delete
-    </DeleteButtonStyledDetailed>
-  );
+    </DeleteButtonStyled>
+  ); 
 };
 
 export default DeleteButtonDetailed;

@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Switch, Route } from 'react-router-dom';
-import { Redirect } from "react-router-dom";
 //styles
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle,ThemeButton} from "./style";
+import { GlobalStyle} from "./style";
 //components
 import Animelist from "./components/Animelist"
 import Home from "./components/Home"
@@ -12,6 +11,7 @@ import products from "./components/dataproducts"
 import ProductList from "./components/ProductList"
 import ProductDetail from "./components/Product-details";
 import NotFound from "./components/PagenotFound/NotFound";
+import ProductForm from "./components/CreateProd"
 
 //Dark&Light Theme
 const theme = {
@@ -69,18 +69,17 @@ function App() {
          </ThemeButton> */}
          <NavBar currentTheme={currentTheme} ToggleCurrentTheme={ToggleCurrentTheme} />
       <Switch>
-          <Route exact path="/">
-          <Home />
+      <Route path={["/products/new", "/products/:productSlug/edit"]}>
+          <ProductForm />
         </Route>
-        <Route path="/List">
-          <Animelist  />
-        </Route>
+                
         <Route path="/products/:productSlug">
         <ProductDetail
         deleteProduct={deleteProduct}
         products={_products}
         setProduct={setProduct}
       />
+      
         </Route>
         <Route path="/products">
         <ProductList
@@ -88,7 +87,15 @@ function App() {
         deleteProduct={deleteProduct}
         setProduct={setProduct}
       />
+              </Route>
+
+      <Route path="/List">
+          <Animelist  />
         </Route>
+      <Route exact path="/">
+          <Home />
+        </Route>
+
         {/* Error */}
         <Route>
           <NotFound />
