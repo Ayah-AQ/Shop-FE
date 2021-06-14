@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
               (product) => product.id !== action.payload.productId
             ),
         }
-case "UPDATE-PRODUCT":
+case "UPDATE_PRODUCT":
     const{updateProduct}= action.payload
     updateProduct.slug=slugify(updateProduct.name)
     // const {updateProduct}= action.payload;

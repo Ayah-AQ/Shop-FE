@@ -30,7 +30,9 @@ const history = useHistory();
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(addProduct(product))
+        updatedProduct?
+        dispatch(updateProduct(product))
+        :dispatch(addProduct(product))
         history.push("/products");
 
     }
