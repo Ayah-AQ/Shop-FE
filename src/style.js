@@ -162,7 +162,7 @@ export const DeleteButtonStyled = styled.button`
   }
 `;
 
-export const DeleteButtonStyledDetailed = styled.button`
+export const DeleteButton = styled.button`
   background-color:"#39a6a3";
   color: black;
   border: 2px solid #39a6a3;
@@ -263,7 +263,7 @@ export const CreateButtonStyled = styled.button`
   }
 `;
 
-export const AddButtonStyled = styled.button`
+export const AddButton = styled.button`
   background: transparent;
   border-radius: 3px;
   border: 2px solid ${(props) => props.theme.pink};

@@ -1,5 +1,5 @@
 //Styles
-import { DeleteButtonStyledDetailed } from "../../styles";
+import { DeleteButton} from "../../styles";
 import { deleteProduct } from "../../store/actions";
 import { useDispatch } from "react-redux"
 // const DeleteButtonDetailed = (props) => {
@@ -7,22 +7,22 @@ import { useDispatch } from "react-redux"
 //     props.deleteProduct(props.productId);
 //   };
 //   return (
-//     <DeleteButtonStyledDetailed onClick={handleDelete}>
+//     <DeleteButtononClick={handleDelete}>
 //       Delete
-//     </DeleteButtonStyledDetailed>
+//     </DeleteButtononClick=>
 //   );
 // };
 
 ;
 
-const DeleteButtonStyledDetailed = ({ productId }) => {
+const DeleteButton= ({ productId }) => {
   const dispatch = useDispatch();
 
 
   return (
-    <DeleteButtonStyled onClick={() => dispatch(deleteProduct(productId))}>
+    <DeleteButton onClick={() => dispatch(deleteProduct(productId))}>
       Delete
-    </DeleteButtonStyled>
+    </DeleteButton>
   ); 
 };
 

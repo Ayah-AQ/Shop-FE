@@ -1,6 +1,5 @@
 //Styles
 import { DeleteButtonStyled } from "../../style";
-
 import { deleteProduct } from "../../store/actions";
 import { useDispatch } from "react-redux";
 

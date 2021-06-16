@@ -3,7 +3,6 @@ import { useDispatch, useSelector  } from "react-redux";
 import { addProduct,updateProduct  } from '../store/actions';
 import { useHistory,Link } from "react-router-dom";
 import {useParams} from 'react-router'
-import { update } from 'lodash';
 
 const ProductForm = () => {
     

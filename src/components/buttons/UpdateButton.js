@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { MdModeEdit } from "react-icons/md";
-import { AddButtonStyled } from "../../style";
+import { AddButton } from "../../style";
 
 const UpdateButton = ({ productSlug }) => {
   return (
-    <AddButtonStyled>
+    <AddButton>
       <Link to={`/products/${productSlug}/edit`}>
         <MdModeEdit color="blue" size="1.5em" />
       </Link>
-    </AddButtonStyled>
+    </AddButton>
   );
 };
 

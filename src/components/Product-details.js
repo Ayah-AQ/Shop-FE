@@ -15,26 +15,7 @@ const ProductDetail = () => {
   //   props.deleteProduct(productId);
   //   props.setProduct(null);
   // };
-
-  // const productSlug = useParams().productSlug;
-  //   const product = props.products.find(
-  //   (product) => product.slug == productSlug
-  // );   
-  // if (!product) return <Redirect to="/Error"></Redirect>;
-  // const products = useSelector(state => state.products);
-
-  // const product = products.find((product) => product.slug === productSlug);
-
-  // if (!product) return <Redirect to="/Error" />;
-
-  // const products = useSelector((state) => state.products.products);
-  // const productSlug = useParams().productSlug;
-
-  // const product = products.find((product) => product.slug === productSlug);
-  // if (!product) return <Redirect to="/Error" />;
-
-
-
+  
   const productSlug = useParams().productSlug
   const products= useSelector((state)=> state.products)
   const dispatch= useDispatch()
