@@ -1,3 +1,4 @@
+import { NavProduct } from "../style";
 import { Logo, NavItem, ThemeButton } from "./navStyle";
 
 const NavBar = ({ currentTheme, ToggleCurrentTheme }) => {
@@ -9,6 +10,7 @@ const NavBar = ({ currentTheme, ToggleCurrentTheme }) => {
         <img src={currentTheme === "light" ? "https://wallpapercave.com/wp/wp5159053.jpg" :"https://wallpapercave.com/wp/wp5146985.jpg"} alt="logo" />
       </Logo>
       <div className="navbar-nav ml-auto">
+      <NavProduct to="/shops">Shops</NavProduct>
         <NavItem className="nav-item" to="/products">
           Products
         </NavItem>

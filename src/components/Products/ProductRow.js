@@ -1,5 +1,5 @@
 //styles
-import{Tr} from "../style"
+import{Tr} from "../../style"
 
 const ProductRow = (props) => {
   return (

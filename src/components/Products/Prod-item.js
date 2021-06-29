@@ -1,10 +1,10 @@
 //styles
-import { ProductWrapper } from "../style";
+import { ProductWrapper } from "../../style";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 //components
-import DeleteButton from "./buttons/Delete";
-import UpdateButton from "./buttons/UpdateButton";
+import DeleteButton from "../Buttons/Delete";
+import UpdateButton from "../Buttons/UpdateButton";
 
 
 const ProductItem = (props) => {

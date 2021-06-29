@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 import {createGlobalStyle} from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
@@ -221,6 +222,7 @@ export const Button = styled.button`
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+ 
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -272,4 +274,49 @@ export const AddButton = styled.button`
   padding: 0.25em 1em;
   margin: auto;
   display: block;
+`;
+export const FormStyled = styled.div`
+  display: container;
+  margin-top: 2em;
+  margin-bottom: 40px;
+  margin-left: 20em;
+  margin-right: 20em; 
+  h2 {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+`;
+
+export const FormButtons = styled.div`
+  align-items: center;
+  justify-content: center;  
+  display: flex;
+`;
+export const NavProduct = styled(NavLink)`
+  padding: 0.25em 1em;
+  text-decoration: none;
+  color: ${(props) => props.theme.mainColor};
+  &.active {
+    color: ${(props) => props.theme.pink};
+  }
+`;
+
+export const ListForm = styled.div`
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
+`;
+
+export const Form = styled.form`
+  width: 50%;
+`;
+export const FormButton = styled.div`
+  align-items: center;
+  justify-content: center;
+  display: flex;
+`;
+export const H = styled.h1`
+  margin-bottom: 50px;
 `;

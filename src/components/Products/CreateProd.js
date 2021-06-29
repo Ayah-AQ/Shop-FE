@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { useDispatch, useSelector  } from "react-redux";
-import { addProduct,updateProduct  } from '../store/actions';
+import { addProduct,updateProduct  } from '../../store/actions/productActions';
 import { useHistory,Link } from "react-router-dom";
 import {useParams} from 'react-router'
 
@@ -27,6 +27,9 @@ const history = useHistory();
     const handleChange = (event) =>{
      setProduct({...product, [event.target.name]: event.target.value})
     }
+    const handleImage = (event) =>
+    setProduct({ ...product, image: event.target.files[0] });
+
     const handleSubmit = (event) => {
         event.preventDefault();
         updatedProduct?
@@ -38,7 +41,9 @@ const history = useHistory();
 
     return (
         <div>
-            <form className="container" onSubmit={handleSubmit} >
+            <form className="container" onSubmit={handleSubmit} 
+            >
+                {/*name----------------------------------*/}
                 <div className="input-group mb-2">
                     <div className="input-group-prepend"></div>
                     <span className="btn btn-outline-info">Name</span>
@@ -49,7 +54,9 @@ const history = useHistory();
                     name="name" 
                     className="form-control"
                     />
-                </div>
+                    </div>
+
+                      {/*Price----------------------------------*/}
                 <div className="input-group mb-2">
                     <div className="input-group-prepend"></div>
                     <span className="btn btn-outline-info">Price</span>
@@ -60,6 +67,8 @@ const history = useHistory();
                     name="price" 
                     className="form-control"/>
                 </div>
+
+                      {/*Description----------------------------------*/}
                 <div className="input-group mb-2">
                     <div className="input-group-prepend"></div>
                     <span className="btn btn-outline-info">Description</span>
@@ -70,24 +79,28 @@ const history = useHistory();
                     name="description" 
                     className="form-control"/>
                 </div>
+
+                 {/*image----------------------------------*/}
                 <div className="input-group mb-2">
                     <div className="input-group-prepend"></div>
                      <span className="btn btn-outline-info">Image</span>
-                    {/*<input 
+                    {/* <input 
                     type="file" 
                     id="file" 
                     name="file" multiple/> */}
-                    <input 
-                    type="text" 
-                    value={product.image}
-                    onChange={handleChange}  
-                    name="image" 
-                    className="form-control"/>
-
+              <input 
+            name="image"
+            type="file"
+            onChange={handleImage}
+           className="form-control" 
+            />
                 </div>
+
+                 {/*button----------------------------------*/}
                 <button type="submit"className="btn btn-success" onSubmit={handleSubmit}>
           {updatedProduct ? "Update" : "Create"}
         </button>
+
         <Link to="/products">
           <button type="back"className="btn btn-success" color="blue">Back</button>
         </Link>

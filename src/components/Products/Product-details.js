@@ -3,10 +3,10 @@ import {Link,Redirect, useParams } from "react-router-dom";
 import {useSelector,useDispatch} from "react-redux";
 import { AiTwotoneEdit } from "react-icons/ai";
 //styles
-import { DetailWrapper, BackButton, ButtonsWrapper  } from "../style";
+import { DetailWrapper, BackButton, ButtonsWrapper  } from "../../style";
 //Components
-import UpdateButton from "./buttons/UpdateButton";
-import DeleteButton from "./buttons/Delete";
+import UpdateButton from "../Buttons/UpdateButton";
+import DeleteButton from "../Buttons/Delete";
 
 const ProductDetail = () => {
   // const product = props.product;
@@ -17,7 +17,7 @@ const ProductDetail = () => {
   // };
   
   const productSlug = useParams().productSlug
-  const products= useSelector((state)=> state.products)
+  const products= useSelector((state)=> state.products.products)
   const dispatch= useDispatch()
   const product=products.find((product)=> product.slug === productSlug)
    if (!product) return <Redirect to="/Error" />;

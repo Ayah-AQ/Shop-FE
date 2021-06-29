@@ -1,6 +1,6 @@
 //Styles
 import { DeleteButton} from "../../styles";
-import { deleteProduct } from "../../store/actions";
+import { deleteProduct } from "../../store/actions/actions";
 import { useDispatch } from "react-redux"
 // const DeleteButtonDetailed = (props) => {
 //   const handleDelete = () => {
