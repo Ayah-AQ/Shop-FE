@@ -1,4 +1,3 @@
-import productsData from"../../components/dataproducts" 
 import slugify from "slugify"
 
 

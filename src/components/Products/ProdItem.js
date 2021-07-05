@@ -17,14 +17,9 @@ const ProductItem = (props) => {
       <Link to={`/products/${props.product.slug}`}>
         <img
            src={photo}
-        //  onMouseOver={() => setPhoto(props.product.image)}
         />
       </Link>
-      {/* <img
-        alt={product.name}
-        src={product.image}
-        
-      /> */}
+      
       <p>{props.product.name}</p>
       <p className="product-price">{props.product.price} JD</p>
       <DeleteButton productId={product.id}> </DeleteButton>

@@ -32,3 +32,21 @@ export const ThemeButton = styled.button`
   background-color: ${(props) => props.theme.mainColor};
    color: ${(props) => props.theme.backgroundColor};
 `;
+export const SignOutStyled = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid ${(props) => props.theme.pink};
+  color: palevioletred;
+  &:hover {
+    color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.pink};
+  }
+`;
+export const UserButton = styled.button`
+  font-size: 1em;
+  padding: 0.25em 1em;
+  border-radius: 3px;
+  background-color: #ff85a2;
+  color: black;
+  margin-right: 10px;
+`;

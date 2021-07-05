@@ -1,26 +1,23 @@
 import { useState } from "react";
-import {Link} from "react-router-dom"
+import {Link,Redirect} from "react-router-dom"
 
 //styles
 import{List, ListWrapper} from "../../style"
 //Components
 import SearchBar from "./SearchBar";
 import {useSelector} from 'react-redux';
-import ProductItem from "..//Products/Prod-item";
+import ProductItem from "./ProdItem";
 import {BsPlusSquare} from "react-icons/bs";
+import Loading from "../Loading";
 
 const ProductList=(props)=>{
+  const user = useSelector((state) => state.users.user);
 
   // serch & Delete
   const [query, setQuery] = useState("");
 //    
+const loading = useSelector((state) => state.products.loading);
 const products= props.products?? useSelector(state=>state.products.products)
-// const product= useSelector((state) => state.products);
-// const loading= useSelector((state) => state.loading)
-
-// if (loading) return <h1>loading</h1>
-// console.log(product)
-
   const ProductList = products
      .filter((product) =>
       product.name.includes(query)
@@ -32,11 +29,14 @@ const products= props.products?? useSelector(state=>state.products.products)
           setProduct={props.setProduct}
           deleteProduct={props.deleteProduct}
            />));
+           if (!user) return <Redirect to="/" />;
   return (
     <div>
+       {loading ? <Loading /> : false}
       <SearchBar setQuery={setQuery} />
        
-        <ListWrapper><List>{ProductList}</List></ListWrapper>
+        <ListWrapper><List style={{flexDirection: "row", 
+flexWrap: "wrap"}}>{ProductList}</List></ListWrapper>
  
     
       

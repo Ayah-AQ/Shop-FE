@@ -1,5 +1,5 @@
 // Styling
-import { ListWrapper } from "../../style";
+import { List, ListWrapper, Title } from "../../style";
 // Components
 import ShopItem from "./ShopItem";
 import SearchBar from "../Products/SearchBar";
@@ -9,29 +9,33 @@ import { useSelector } from "react-redux";
 import Add from "../Buttons/Add";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
+import { AiOutlineAppstoreAdd } from "react-icons/ai";
+import Loading from "../Loading";
 
 const ShopList = () => {
   const [query, setQuery] = useState("");
+  const loading = useSelector((state) => state.shops.loading);
+  const shops = useSelector((state) => state.shops.shops 
+  .filter((shop) =>
+  shop.name.toLowerCase().includes(query.toLowerCase())
+)
+  .map((shop) => <ShopItem key={shop.id} shop={shop} />));
 
-  const shops = useSelector((state) => state.shops.shops);
+return (
+<div>
+  {loading ? <Loading /> : false}
+<Title>Shop List</Title>
+<SearchBar setQuery={setQuery} /> 
+<Link to={`/shops/new`}>
+       <AiOutlineAppstoreAdd style={{width:"50px", height:"50px"}}  />
+  </Link>
+<ListWrapper><List style={{flexDirection: "row", 
+flexWrap: "wrap"}}>
+   {shops}
+ 
 
-  const user = useSelector((state) => state.products.products);
-
-    const shopList = shops
-    .filter((shop) => shop.name.toLowerCase().includes(query.toLowerCase()))
-    .map((shop) => <ShopItem shop={shop} key={shop.id} />);
-
-  return (
-    <div>
-      <Helmet>
-        <title>Shops List </title>
-      </Helmet>
-      <SearchBar setQuery={setQuery} />
-      <Link to="/shops/new">
-        <Add />
-      </Link>
-      <ListWrapper>{shopList}</ListWrapper>
-    </div>
+</List>  </ListWrapper>
+</div>
   );
 };
 

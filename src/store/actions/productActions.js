@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux"
 import * as types from "./types";
-import axios from "axios"
+import instance from "./instance";
 
 
 // BE
 export const fetchProducts = () => {
   return async (dispatch) => {
       try {
-          const res = await axios.get("http://localhost:8000/products");
+          const res = await instance.get("/products");
           console.log(res.data)
           dispatch({
               type: types.FETCH_PRODUCTS, 
@@ -27,8 +27,8 @@ export const addProduct = (newProduct) => {
       const formData = new FormData();
   for (const key in newProduct) formData.append(key, newProduct[key]);
   // console.log("formData", formData);;
-                 const res = await axios.post(
-  `http://localhost:8000/shops/${newShop.shopId}/products`,
+  const res = await instance.post(
+  `/shops/${newProduct.shopId}/products`,
   formData
 );
   
@@ -48,7 +48,7 @@ export const addProduct = (newProduct) => {
   export const deleteProduct =  (productId) => {
     return async (dispatch) => {
     try{
-      const res = await axios.delete(`http://localhost:8000/products/${productId}`)
+      const res = await instance.delete(`/products/${productId}`)
       console.log(res.data)
 dispatch({
     type: types.DELETE_PRODUCT,
@@ -66,7 +66,7 @@ catch(error){
           try{
             const formData = new FormData();
             for(const key in updatedProduct) formData.append(key, updatedProduct[key]);
-      const res = await axios.put(`http://localhost:8000/products/${updatedProduct.id}` ,
+      const res = await instance.put(`/products/${updatedProduct.id}` ,
       formData)
  
 dispatch({

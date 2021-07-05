@@ -1,47 +1,60 @@
 import { useParams, Redirect, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {Helmet} from "react-helmet";
-
+import { useSelector } from "react-redux";
 // Components
 import ProductList from "../Products/ProductList";
 // Styling
-import { DetailWrapper } from "../../style";
+import { DetailWrapper, List } from "../../style";
 import DeleteButton from "../Buttons/Delete";
 import { deleteProduct } from "../../store/actions/productActions";
 import { BsPlusSquare } from "react-icons/bs";
 
 const ShopDetail = () => {
+ 
+  const shops = useSelector((state) => state.shops.shops);
+  const allProducts = useSelector(
+    (state) => state.products.products
+  );
   const { shopSlug } = useParams();
-
-  const allProducts = useSelector((state) => state.products.products);
-  const shops=useSelector((state) => state.shops.shops)
-  const shop = useSelector((state) => {
-    return shops.find((shop) => shop.slug === shopSlug);
-  });
-
-  console.log(shop);
-  const products = shops.products.map((products) =>
-    allProducts.find((_products) => _products.id === products.id)
+  const shop = shops.find(
+    (_shop) => _shop.slug === shopSlug
   );
 
-  if (!shop) return <Redirect to="/Error" />;
+  if (!shop) {
+    return <Redirect to="/shops" />;
+  }
+  let products = [];
+  if (shop.products) {
+    products = allProducts.filter((_product) => _product.shopId === shop.id)
+    
+  }
 
   return (
-    <>
+    
+   <>
    <DetailWrapper>
-        <Helmet>
-          <title>{`${shop.name} Details`} </title>
-        </Helmet>
-        <h1>{shop.name}</h1>
-        <img src={shop.image} alt={shop.name} />
-      </DetailWrapper>
-    <ProductList products={lestOfProducts} />
-    <Link to={`/shops/${shop.id}}/products/new`} >
-        <BsPlusSquare className="float-right" size="2em" />
-      </Link> 
-      <ShopProductList products={products} />
- 
-  </>
+     <div className="">
+       <h3 className="mt-5">{shop.name}</h3>
+       <Link
+         to={{
+           pathname: `/shops/${shop.id}/products/new`,
+           state: { shopId: shop.id },
+         }}
+       >
+         {" "}
+         <BsPlusSquare size="50px" >
+           Add Product
+         </BsPlusSquare>
+       </Link>
+     </div>
+   </DetailWrapper>
+   {products.length > 0 ? (
+     <List>
+       <ProductList products={products} />
+     </List>
+   ) : (
+     <List>No Products yet</List>
+   )}
+ </>
   );
 };
 

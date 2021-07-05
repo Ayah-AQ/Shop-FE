@@ -24,19 +24,14 @@ const ProductDetail = () => {
  
   return (
     <DetailWrapper>
-          {/* <Link to={`/products/${props.product.slug}`}></Link> */}
        <h1>{product.name}</h1>
       <img src={product.image} alt={product.name} />
       <p>{product.description}</p>
       <p>{product.price} JD </p>
-      {/* <BackButton className="detail" onClick={() => props.setProduct(null)}>
-        Back
-      </BackButton> */}
+      
       <DeleteButton productId={product.id} />
       <UpdateButton className="float-right" productSlug={product.slug} />
-          {/* <BackButton onClick={() => props.setProduct(null)}>
-             back
-          </BackButton> */}
+        
            <Link to="/products">
           <BackButton  type="back"className="btn btn-success" color="blue">Back</BackButton>
         </Link>

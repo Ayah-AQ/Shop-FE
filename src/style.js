@@ -320,3 +320,10 @@ export const FormButton = styled.div`
 export const H = styled.h1`
   margin-bottom: 50px;
 `;
+export const Override = styled.div`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+  justify-content: center;
+  display: flex;
+`;

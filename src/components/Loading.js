@@ -1,13 +1,11 @@
-// Styling
-import { ListWrapper } from "../style";
-import PropagateLoader from "react-spinners/PropagateLoader";
+import ClipLoader from "react-spinners/ClipLoader";
+import { Override } from "../style";
 
 const Loading = () => {
-    return (
-        <ListWrapper style={{marginTop: "10em"}}>
-            <PropagateLoader color="black" size={10}/>
-        </ListWrapper>
-    );
+  return (
+    <Override className="mt-5">
+      <ClipLoader color="#9d0208" size={70} />
+    </Override>
+  );
 };
-
 export default Loading;

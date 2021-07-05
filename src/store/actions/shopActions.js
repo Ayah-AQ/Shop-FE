@@ -1,11 +1,13 @@
 
 import * as types from "./types";
-import axios from "axios"
+import instance from "./instance";
+
+
 export const fetchShops = () => {
     return async (dispatch) => {
         console.log("hello");
         try {
-            const res = await axios.get("http://localhost:8000/shops");
+            const res = await instance.get("/shops");
             dispatch({
                 type: types.FETCH_SHOPS, 
                 payload: {shops: res.data}
@@ -21,7 +23,7 @@ export const AddShop = (newShop) => {
         try {
             const formData = new FormData();
             for(const Key in newShop) formData.append(Key, newShop[Key]);
-            const res = await axios.post("http://localhost:8000/shops/new", formData);
+            const res = await instance.post("/shops/new", formData);
             dispatch({
                 type: types.ADD_SHOP, 
                 payload: {newShop: res.data}

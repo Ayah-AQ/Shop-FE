@@ -5,37 +5,34 @@ import { useHistory,Link } from "react-router-dom";
 import {useParams} from 'react-router'
 
 const ProductForm = () => {
-    
+  const { shopSlug,shopId } = useParams();
+    const history = useHistory();
+    const dispatch = useDispatch();
 
-    const productSlug = useParams().productSlug
-    const products= useSelector((state)=> state.products)
-    const updatedProduct= products.find((product)=> product.slug === productSlug)
-    const [product, setProduct] = useState(
-        
-        updatedProduct ??{
-        name: "",
-        price: 0,
-        description: "",
-        image: "",
-    })
-
-
-const history = useHistory();
-    const dispatch = useDispatch()
-    
-
-    const handleChange = (event) =>{
-     setProduct({...product, [event.target.name]: event.target.value})
-    }
-    const handleImage = (event) =>
-    setProduct({ ...product, image: event.target.files[0] });
-
+     const [product, setProduct] = useState(
+     {
+      name: "",
+      image: "",
+      description: "",
+      price:0,
+      shopId: shopId,
+  
+    });
+    const handleChange = (event) =>
+      setProduct({
+        ...product,
+        [event.target.name]: event.target.value,
+      });
+    const handleImage = (event) => {
+      setProduct({ ...product, image: event.target.files[0] });
+    };
+  
     const handleSubmit = (event) => {
         event.preventDefault();
-        updatedProduct?
-        dispatch(updateProduct(product))
-        :dispatch(addProduct(product))
-        history.push("/products");
+        // updatedProduct?
+        // dispatch(updateProduct(product)) :
+       dispatch(addProduct(product))
+        history.goBack();
 
     }
 
@@ -98,7 +95,8 @@ const history = useHistory();
 
                  {/*button----------------------------------*/}
                 <button type="submit"className="btn btn-success" onSubmit={handleSubmit}>
-          {updatedProduct ? "Update" : "Create"}
+          {/* {updatedProduct ? "Update" : "Create"} */}
+          Create
         </button>
 
         <Link to="/products">
