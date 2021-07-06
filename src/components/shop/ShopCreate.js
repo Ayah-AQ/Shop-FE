@@ -5,11 +5,15 @@ import { useHistory, useParams ,Link} from "react-router-dom";
 import { ListForm, Form, FormButton, H } from "../../style";
 
 const ShopForm = () => {
+    const { userSlug,userId } = useParams();
+
   const shopSlug = useParams().shopSlug
     const shops= useSelector((state)=> state.shops.shops)
   const [shop, setShop] = useState({
     name: "",
     image: "",
+          userId: userId,
+
   });
 
   const dispatch = useDispatch();

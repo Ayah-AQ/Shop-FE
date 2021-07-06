@@ -5,12 +5,15 @@ import * as types from "../actions/types";
 const setUser = (token) => {
   if(token){
   localStorage.setItem("token", token);
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    console.log(instance.defaults.headers.common.Authorization);
   return {
     type: types.SET_USER,
     payload: decode(token),
   };}
   else{
       localStorage.removeItem("token");
+  delete instance.defaults.headers.common.Authorization;
 return {
     type: types.SET_USER,
     payload:null,
@@ -35,10 +38,8 @@ export const signin = (userData, history) => {
   return async (dispatch) => {
     try {
       const res = await instance.post("/signin", userData);
-   dispatch(
-     {type: types.SET_USER,
-     payload:decode(res.data.token)});
-        //  history.replace("/")
+   dispatch(setUser(res.data.token));
+      history.replace("/")
 
     } catch (error) {
       console.error(error);

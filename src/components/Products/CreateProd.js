@@ -8,7 +8,6 @@ const ProductForm = () => {
   const { shopSlug,shopId } = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
-
      const [product, setProduct] = useState(
      {
       name: "",

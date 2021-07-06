@@ -31,9 +31,7 @@ export const addProduct = (newProduct) => {
   `/shops/${newProduct.shopId}/products`,
   formData
 );
-  
-      
-      console.log(res.data)
+        console.log(res.data)
       dispatch({
     type: types.ADD_PRODUCT,
     payload:  {newProduct:res.data}

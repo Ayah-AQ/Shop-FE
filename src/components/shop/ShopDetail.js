@@ -37,7 +37,7 @@ const ShopDetail = () => {
        <Link
          to={{
            pathname: `/shops/${shop.id}/products/new`,
-           state: { shopId: shop.id },
+           state: { shopId: shop.id,shopSlug:shop.slug },
          }}
        >
          {" "}
